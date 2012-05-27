@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # /etc/pm/sleep.d/99asus_superhe_sleep
 #
 # http://idolinux.blogspot.com/2012/01/fedora-16-xfce-on-eee-pc.html
