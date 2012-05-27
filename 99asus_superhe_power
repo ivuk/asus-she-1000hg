@@ -5,13 +5,17 @@
 #
 
 CpuFv="/sys/devices/platform/eeepc/cpufv"
+Backlight="/sys/class/backlight/eeepc/brightness"
+
 
 case "$1" in
     true)
         /bin/echo -n 2 > "$CpuFv"
+        /bin/echo -n 2 > "$Backlight"
     ;;
     false)
         /bin/echo -n 0 > "$CpuFv"
+        /bin/echo -n 10 > "$Backlight"
     ;;
 esac
 
