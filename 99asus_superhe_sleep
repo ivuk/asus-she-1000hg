@@ -11,10 +11,12 @@ case "$1" in
         if  [ -f $Ac ]; then
             if grep 0 "$Ac" > /dev/null; then
                 /etc/pm/power.d/99asus_superhe_power true
+            else
+                /etc/pm/power.d/99asus_superhe_power false
             fi
-        else
-            /etc/pm/power.d/99asus_superhe_power false
-        fi
+	else
+	    exit 14
+	fi
 esac
  
 exit 0
