@@ -5,19 +5,14 @@
 #
  
 Ac="/sys/bus/acpi/drivers/ac/ACPI0003:00/power_supply/AC0/online"
-Backlight="/sys/class/backlight/eeepc/brightness"
 
 case "$1" in
-    thaw)
-        if  [ -f $Ac ] && [ -f $Backlight ]; then
-            if grep 0 "$Ac" > /dev/null; then
-                /etc/pm/power.d/99asus_superhe_power true
-            else
-                /etc/pm/power.d/99asus_superhe_power false
-            fi
-	else
-	    exit 14
-	fi
+	thaw)
+		if grep 0 "$Ac" > /dev/null; then
+			/etc/pm/power.d/99asus_superhe_power true
+		else
+			/etc/pm/power.d/99asus_superhe_power false
+		fi
 esac
  
 exit 0

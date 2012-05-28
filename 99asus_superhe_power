@@ -7,15 +7,22 @@
 CpuFv="/sys/devices/platform/eeepc/cpufv"
 Backlight="/sys/class/backlight/eeepc/brightness"
 
-
 case "$1" in
-    true)
-        /bin/echo -n 2 > "$CpuFv"
-        /bin/echo -n 2 > "$Backlight"
+	true)
+		if  [ -f $Ac ] && [ -f $Backlight ]; then
+			/bin/echo -n 2 > "$CpuFv"
+			/bin/echo -n 2 > "$Backlight"
+		else
+			exit 14
+		fi
     ;;
-    false)
-        /bin/echo -n 0 > "$CpuFv"
-        /bin/echo -n 10 > "$Backlight"
+	false)
+		if  [ -f $Ac ] && [ -f $Backlight ]; then
+			/bin/echo -n 0 > "$CpuFv"
+			/bin/echo -n 10 > "$Backlight"
+		else
+			exit 14
+		fi
     ;;
 esac
 
